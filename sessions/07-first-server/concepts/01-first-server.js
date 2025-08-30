@@ -8,22 +8,16 @@ const app = express(); // 1️⃣  Create an Express *app*
 
 // http://localhost:3000
 // 2️⃣  Define a single *route* – GET /
-function handlercallbackarrowFunction(req, res){
+
+app.get('/', (req, res) => {
   console.log("im doing something")
   res.send('👋  Hello World from Express!');
-}
+});
 
-app.get('/', handlercallbackarrowFunction);
-
-app.get('/something', function handlercallbackarrowFunction(req, res){
+app.get('/something', (req, res) => {
   console.log("im doing something else")
   res.send('👋  Hello World from Expressssssss!');
 })
-// another function (it handles stuff for us xD)
-// arrow function - yes
-// call back function - yes (another name again)
-
-
 
 
 // 3️⃣  Start the server
