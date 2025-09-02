@@ -67,7 +67,7 @@ app.post("/students", (req, res) => {
   function filterquick(id){
     const filteredStudents = []
     for(const s of students){
-      if(s.id === id) filteredStudents.push(s);
+      if(s.id !== id) filteredStudents.push(s);
     }
     return filteredStudents;
   }
