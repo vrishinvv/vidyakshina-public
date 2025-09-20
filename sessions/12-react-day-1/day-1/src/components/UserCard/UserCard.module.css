@@ -1,0 +1,12 @@
+.card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+.name {
+  font-weight: 600;
+}
+.role {
+  opacity: 0.8;
+}
