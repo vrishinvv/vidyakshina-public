@@ -53,14 +53,14 @@ function getAllUsers(){
     return usersList
 }   
 
-function checkUser(username, password){
+async function checkUser(username, password){
     const checkSql = ` SELECT * from users 
                         WHERE username = $1 
                         AND password = $2
     `
 
     const params = [username, password]
-    return execQuery(checkSql, params);
+    return await execQuery(checkSql, params);
 }
 
 
