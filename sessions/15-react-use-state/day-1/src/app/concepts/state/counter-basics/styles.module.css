@@ -1,0 +1,11 @@
+.wrap {
+    max-width: 680px;
+    margin: 24px auto;
+    padding: 0 16px;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.row {
+    display: flex;
+    gap: 8px;
+}

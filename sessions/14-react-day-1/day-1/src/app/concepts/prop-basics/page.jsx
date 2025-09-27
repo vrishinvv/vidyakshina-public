@@ -6,9 +6,9 @@ export default function Page() {
   return (
     <div>
       <h2>Props let us reuse components</h2>
-      <Greeting name="Asha" />
-      <Greeting name="Rahul" />
-      <Greeting name="Meera" />
+      <Greeting name="Asha" age="10"/>
+      <Greeting name="Rahul" age="20"/>
+      <Greeting name="Meera" age="30"/>
     </div>
   );
 }

@@ -8,12 +8,17 @@ export default function Page() {
       <Card title="About">
         <p>This content is passed from the parent into the Card.</p>
       </Card>
-      <Card title="Tip">
-        <ul>
+      <ul>
           <li>Compose UIs by nesting components.</li>
           <li><code>children</code> is whatever you put between the tags.</li>
         </ul>
+      <Card title="Tip">
+        
       </Card>
+      <ul>
+          <li>Compose UIs by nesting components.</li>
+          <li><code>children</code> is whatever you put between the tags.</li>
+        </ul>
     </div>
   );
 }

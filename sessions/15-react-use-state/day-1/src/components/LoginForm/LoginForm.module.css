@@ -1,0 +1,43 @@
+.container {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #74ebd5, #9face6);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 24px 16px;
+}
+
+.box {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 11px 12px 13px 9px rgba(0, 0, 0, 0.3);
+  width: 320px;
+  text-align: center;
+}
+
+.box h2 {
+  margin: 0 0 20px;
+  color: #333;
+}
+
+.input {
+  width: 80%;
+  padding: 12px;
+  margin: 10px auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  display: block;
+  background-color: #ccc;
+  color: #333;
+}
+
+.helper {
+  margin-top: 15px;
+  font-size: .9rem;
+  color: #666;
+  cursor: pointer;
+  text-decoration: underline;
+}
