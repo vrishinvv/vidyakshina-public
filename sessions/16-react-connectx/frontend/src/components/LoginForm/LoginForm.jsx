@@ -14,7 +14,7 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false);
 
   async function handleLogin(e) {
-    e?.preventDefault();
+    e.preventDefault();
 
     if (!username || !password) {
       alert('Please enter username and password.');

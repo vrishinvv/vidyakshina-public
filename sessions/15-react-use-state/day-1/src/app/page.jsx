@@ -8,7 +8,7 @@ export default function Page() {
       <ul className={styles.list}>
         <li><Link href="/concepts/state/hello-world">helloWorld</Link></li>
         <li><Link href="/concepts/state/status-picker">status picker</Link></li>
-        <li><Link href="/concepts/state/valid-email">valid email</Link></li>
+        <li><Link href="/concepts/auth/login">login</Link></li>
       </ul>
     </main>
   );

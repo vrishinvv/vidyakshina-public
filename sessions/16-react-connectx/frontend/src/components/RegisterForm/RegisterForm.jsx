@@ -14,7 +14,7 @@ export default function RegisterForm() {
   const [loading, setLoading] = useState(false);
 
   async function handleRegister(e) {
-    e?.preventDefault();
+    e.preventDefault();
 
     if (!username || !password) {
       alert('Please enter username and password.');

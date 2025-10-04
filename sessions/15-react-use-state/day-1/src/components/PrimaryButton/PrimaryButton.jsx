@@ -8,7 +8,6 @@ export default function PrimaryButton(props) {
     <button className={styles.btn} type="button" {...restOfprops}>
       {children}
     </button>
-    {restOfprops.name} | {props.age} | {props.somethingINeverPasses}
     </>
 
   );

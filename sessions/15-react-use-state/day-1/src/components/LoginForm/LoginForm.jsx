@@ -1,14 +1,24 @@
+'use client'
+
 import styles from '@/components/LoginForm/LoginForm.module.css';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import Link from 'next/link';
 import SecondaryButton from '../SecondaryButton/SecondaryButton';
 
 export default function LoginForm(props) {
+  let name = "";
+
+  console.log("re-rendered");
+
   return (
     <div className={styles.container}>
       <div className={styles.box}>
         <h2>Sign In</h2>
-        <input className={styles.input} placeholder="Username" />
+        <input 
+          className={styles.input} 
+          placeholder="Username" 
+          value={name} 
+          onChange={(e) => name = e.target.value} />
         <input className={styles.input} placeholder="Password" type="password" />
         <PrimaryButton name="sing-in" age="24" school="PS" text="sigin">
     
