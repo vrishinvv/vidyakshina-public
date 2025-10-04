@@ -8,7 +8,10 @@ export default function Page() {
   function handleChange(e) { 
     // e.target refers to the element from which the particular "event"(e) got emitted from
     // we dont have to understand what is event n oll here - just remeber this 
-    setName(e.target.value); 
+    setName((prevName) => {return e.target.value}); 
+  }
+  function resetName(){
+    setName((n)=>'');
   }
 
   return (
@@ -21,6 +24,7 @@ export default function Page() {
         className={styles.input}
       />
       <p>Hello, <strong>{name || 'stranger'}</strong>!</p>
+      <button onClick={resetName}> reset </button>
     </div>
   );
 }

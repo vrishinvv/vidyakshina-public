@@ -7,6 +7,8 @@ export default function Page() {
       <h1>Session 3</h1>
       <ul className={styles.list}>
         <li><Link href="/concepts/state/hello-world">helloWorld</Link></li>
+        <li><Link href="/concepts/state/status-picker">status picker</Link></li>
+        <li><Link href="/concepts/state/valid-email">valid email</Link></li>
       </ul>
     </main>
   );

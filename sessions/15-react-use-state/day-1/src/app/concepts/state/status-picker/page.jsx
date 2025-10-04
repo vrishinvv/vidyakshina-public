@@ -10,9 +10,11 @@ export default function Page() {
   function setDnd() { setStatus('Do Not Disturb'); }
   function reset() { setStatus('Offline'); }
 
+  console.log("test")
+
   return (
     <div className={styles.wrap}>
-      <h2>Status Picker (no prev value)</h2>
+      <h2>Status Picker </h2>
       <p className={styles.current}>Current: <strong>{status}</strong></p>
       <div className={styles.row}>
         <button onClick={setOnline}>Online</button>

@@ -9,9 +9,11 @@ export default function Page() {
     function handleInc() {
         // state chnage function always takes a call back, where first param is "current" value of state variable
         // in this case, it is "c"
-        setCount((c) => {
-            return c + 1
+        setCount((prevCount) => {
+            return prevCount + 1
         });
+
+        //setCount(count + 1)
     }
     function handleDec() { 
         setCount((c) => {

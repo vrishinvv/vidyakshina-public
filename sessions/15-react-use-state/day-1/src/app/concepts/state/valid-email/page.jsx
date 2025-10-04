@@ -14,7 +14,7 @@ export default function Signup() {
     <div className={styles.wrap}>
       <input
         className={styles.input}
-        value={email}
+        // value={email}
         onChange={handleChange}
         placeholder="Email address"
         type="email"
