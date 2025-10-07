@@ -23,7 +23,7 @@ Each step has a short **What to do** and a **Hint**. Follow in order. ✅
 **What to do:** Draw a simple wireframe of the app’s main screen.  
 **Hint:** Use this napkin sketch as inspiration.
 
-![UI napkin sketch](/Users/vrishinvv/Downloads/napkin-sketch.png)
+![UI napkin sketch](./napkin-sketch.png)
 
 
 ---
@@ -127,7 +127,7 @@ RETURNING votes;
 **What to do:** Call your API from React and render the list.  
 **Hint (data‑flow sketch):**
 
-![API request sequence](/Users/vrishinvv/Downloads/req-flow.png)
+![API request sequence](./req-flow.png)
 
 - On load or category change → `GET /api/ideas?category=...`
 - On create → `POST /api/ideas` then prepend item to list
