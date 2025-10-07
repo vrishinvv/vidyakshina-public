@@ -4,14 +4,14 @@ import './SpeedType.css';
 import { useRouter } from 'next/navigation';
 
 
-function TimerOptions({ options, selected, onSelect }) {
+function TimerOptions({ options, selectedddddd, onSelectttt }) {
     return (
         <div className="timer-options">
             {options.map(val => (
                 <button
                     key={val}
-                    className={val === selected ? 'selected' : ''}
-                    onClick={() => onSelect(val)}
+                    className={val === selectedddddd ? 'selected' : ''}
+                    onClick={() => onSelectttt(val)}
                 >
                     {val}
                 </button>
@@ -87,8 +87,8 @@ export default function TypingTest({ user }) {
     // Restart test (back to idle)
     function restartTest() {
         setStatus(STATUS.IDLE);
-        setTestDuration(testDuration);
-        setTimeLeft(() => testDuration);
+        setTestDuration(16);
+        setTimeLeft(() => 16);
     }
 
     return (
@@ -106,8 +106,8 @@ export default function TypingTest({ user }) {
                 <>
                     <TimerOptions
                         options={[15, 40, 60, 120]}
-                        selected={testDuration}
-                        onSelect={val => {
+                        selectedddddd={testDuration}
+                        onSelectttt={val => {
                             setTestDuration(val);
                             setTimeLeft(val);
                         }}
