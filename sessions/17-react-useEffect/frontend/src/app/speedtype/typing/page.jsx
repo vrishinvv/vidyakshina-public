@@ -87,8 +87,8 @@ export default function TypingTest({ user }) {
     // Restart test (back to idle)
     function restartTest() {
         setStatus(STATUS.IDLE);
-        setTestDuration(16);
-        setTimeLeft(() => 16);
+        setTestDuration(testDuration);
+        setTimeLeft(() => testDuration);
     }
 
     return (
