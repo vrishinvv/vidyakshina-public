@@ -23,6 +23,37 @@ function getWords(x) {
   return shuffled.slice(0, x);
 }
 
+function calculateResults(typedChars, fullText, startTime) {
+  let correctCount = 0;
+  for (let i = 0; i < typedChars.length; i++) {
+    if (typedChars[i] === fullText[i]) correctCount++;
+  }
+  const totalTyped = typedChars.length;
+  
+  const accuracy = totalTyped ? Math.round((correctCount / totalTyped) * 100) : 0;
+  const elapsedMinutes = (Date.now() - startTime) / 60000;
+  const wpm = elapsedMinutes ? Math.round((correctCount / 5) / elapsedMinutes) : 0;
+  
+  return { wpm, accuracy };
+}
+
+// Helper to save results (should use env/config for URL in production)
+async function saveResults(wpm, accuracy) {
+
+  try {
+    const userId = sessionStorage.getItem('user_id');
+    await fetch('http://localhost:8001/results/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, wpm, accuracy })
+    });
+  } catch (err) {
+    console.error('Error saving result:', err);
+  }
+}
+
+
+
 // Single status to represent test state
 const STATUS = {
     IDLE: 'idle',
@@ -64,8 +95,21 @@ function ResultPanel({ wpm, accuracy }) {
   );
 }
 
+// UI subcomponents
+function ColorBlindToggle({ value, onChange }) {
+  return (
+    <div className="colorblind-toggle">
+      <label className="switch">
+        <input type="checkbox" checked={value} onChange={onChange} />
+        <span className="slider round"></span>
+      </label>
+      <span className="label-text">Color Blind Mode</span>
+    </div>
+  );
+}
 
-export default function TypingTest({ user }) {
+
+export default function TypingTest() {
     // State
 
     const [words, setWords] = useState([]);
@@ -78,12 +122,18 @@ export default function TypingTest({ user }) {
     const [testDuration, setTestDuration] = useState(60);
     const containerRef = useRef();
 
-    const allChars = useMemo(() => words.join(' ').split(''), [words]);
+    const [wpm, setWpm] = useState(0);
+    const [accuracy, setAccuracy] = useState(0);
+    const [startTime, setStartTime] = useState(null);
+    const [colorBlindMode, setColorBlindMode] = useState(false);
+
+    const fullText = useMemo(() => words.join(' ') + ' ', [words]);
+    const allChars = useMemo(() => fullText.split(''), [fullText]);
 
     // Load words on mount
     useEffect(() => {
         setWords(getWords(200));
-        // containerRef.current?.focus();
+        containerRef.current?.focus();
     }, []);
 
     function handleKeyPress(event) {
@@ -99,6 +149,7 @@ export default function TypingTest({ user }) {
         // 1. Space starts the test from idle
         if (status === STATUS.IDLE && key === ' ') {
             setStatus(STATUS.RUNNING);
+            setStartTime(Date.now());
             return;
         }
 
@@ -138,6 +189,10 @@ export default function TypingTest({ user }) {
     // Finish test at end of timer
     async function finishTest() {
         setStatus(STATUS.FINISHED);
+        const { wpm: calculatedWPM, accuracy: acc } = calculateResults(typedChars, fullText, startTime);
+        setWpm(calculatedWPM);
+        setAccuracy(acc);
+        await saveResults(calculatedWPM, acc);
     }
 
     // Restart test (back to idle)
@@ -148,6 +203,9 @@ export default function TypingTest({ user }) {
         setStatus(STATUS.IDLE);
         setTestDuration(testDuration);
         setTimeLeft(() => testDuration);
+        setWpm(0);
+        setAccuracy(0);
+        setStartTime(null);
     }
 
     return (
@@ -157,6 +215,10 @@ export default function TypingTest({ user }) {
             ref={containerRef}
             onKeyDown={handleKeyPress}
         >
+            <ColorBlindToggle
+                value={colorBlindMode}
+                onChange={() => setColorBlindMode(prev => !prev)}
+            />
 
             <h2>Typing Test</h2>
             <div className="timer-display">{timeLeft}s</div>
@@ -165,6 +227,7 @@ export default function TypingTest({ user }) {
                 chars={allChars}
                 typed={typedChars}
                 pos={charIndex}
+                colorBlindMode={colorBlindMode}
             />
 
             {status === STATUS.IDLE ? (
@@ -181,7 +244,7 @@ export default function TypingTest({ user }) {
                 </>
             ) : (
                 <>
-                    {status === STATUS.FINISHED && <ResultPanel wpm={0} accuracy={0} />}
+                    {status === STATUS.FINISHED && <ResultPanel wpm={wpm} accuracy={accuracy} />}
                     <Controls onRetry={restartTest} />
                 </>
             )}
@@ -200,21 +263,17 @@ export default function TypingTest({ user }) {
 
 
 /*
-1. desgn the wor dbox 
-    i. need a box
-    ii. need words inside the box 
+1.
+1. add color blind mode (tis a simple toggle)
+    i. so we need another state
+    ii. simply pass the state to typing display and handle it there
 
-2. what all new states 
-    i. i need words in the box 
-    ii. i need to know what all user has typed till now 
-    iii. i need to know the current position of the user
+1. calculate wpm/accuracy 
 
-3. add keyboard event listener for user typing
+3. now you want to save the results in DB
+    i. first think where will i get user id from 
+    ii. then create a new API in backend to save the results
+    iii. call that API from here
 
-4. handle restart and finish
-
-5. show some dummy result after typing 
-
--- what is useMemo
 
 */

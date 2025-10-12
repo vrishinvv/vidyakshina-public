@@ -78,12 +78,17 @@ export default function TypingTest({ user }) {
     const [testDuration, setTestDuration] = useState(60);
     const containerRef = useRef();
 
-    const allChars = useMemo(() => words.join(' ').split(''), [words]);
+    const [toggle, setToggle] = useState(false)
+
+    const fullText = useMemo(() => words.join(' ') + ' ', [words]);
+    const allChars = useMemo(() => fullText.split(''), [fullText]);
+
+    console.log('parent toggle', toggle)
 
     // Load words on mount
     useEffect(() => {
         setWords(getWords(200));
-        // containerRef.current?.focus();
+        containerRef.current?.focus();
     }, []);
 
     function handleKeyPress(event) {
@@ -157,6 +162,7 @@ export default function TypingTest({ user }) {
             ref={containerRef}
             onKeyDown={handleKeyPress}
         >
+            <input type="checkbox" onChange={() => setToggle(!toggle)} checked={toggle}/>
 
             <h2>Typing Test</h2>
             <div className="timer-display">{timeLeft}s</div>
@@ -165,6 +171,7 @@ export default function TypingTest({ user }) {
                 chars={allChars}
                 typed={typedChars}
                 pos={charIndex}
+                colorBlindMode={toggle}
             />
 
             {status === STATUS.IDLE ? (

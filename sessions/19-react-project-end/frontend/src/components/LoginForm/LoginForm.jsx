@@ -24,10 +24,18 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:8001/login',
+      const result = await axios.post('http://localhost:8001/login',
         { username, password }
       );
+
+      console.log(result);
+      const userId = result.data.id;
+ 
+      sessionStorage.setItem('user_id', userId);
+
       router.push('/speedtype/typing');
+
+      
 
     } catch (err) {
       let msg = 'Login failed.';

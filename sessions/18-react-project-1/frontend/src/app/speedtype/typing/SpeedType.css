@@ -159,15 +159,24 @@
 
 .char {
   white-space: pre;
-  display: inline;
+  /* display: inline; */
 }
 
 .char.correct {
   color: #4CAF50; /* Green for correct */
 }
 
+
 .char.incorrect {
-  color: #F44336; /* Red for incorrect */
+  color: #e11616; /* Green for correct */
+}
+
+.char.cb-correct {
+  color: #eb9b2d; /* Green for correct */
+}
+
+.char.cb-incorrect {
+  color: #3659f4; /* Red for incorrect */
 }
 
 /* Currently focused character */

@@ -7,9 +7,17 @@ function getCharClassName(i, char, typed, pos, colorBlindMode) {
   if (i < typed.length) {
     const isCorrect = typed[i] === char;
     if (isCorrect) {
-      cls += ' correct';
+      if(colorBlindMode){
+        cls += ' cb-correct'
+      }else{
+        cls += ' correct';
+      }
     } else {
-      cls += ' incorrect';
+      if(colorBlindMode){
+        cls += ' cb-incorrect'
+      }else{
+        cls += ' incorrect';
+      }
     }
   }
 
@@ -20,7 +28,16 @@ function getCharClassName(i, char, typed, pos, colorBlindMode) {
   return cls;
 }
 
-export default function TypingDisplay({ chars, typed, pos }) {
+export default function TypingDisplay(props) {
+  const {
+    chars, 
+    typed, 
+    pos, 
+    colorBlindMode
+  } = props;
+
+  console.log(colorBlindMode)
+
   const currentCharRef = useRef(null);
 
   // Scroll to the current character when it moves
@@ -36,7 +53,7 @@ export default function TypingDisplay({ chars, typed, pos }) {
       {chars.map((char, i) => (
         <span
           key={i}
-          className={getCharClassName(i, char, typed, pos)}
+          className={getCharClassName(i, char, typed, pos, colorBlindMode)}
           ref={i === pos ? currentCharRef : null}
           
         >
