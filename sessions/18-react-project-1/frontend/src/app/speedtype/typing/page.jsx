@@ -205,23 +205,3 @@ export default function TypingTest({ user }) {
     );
 }
 
-
-/*
-1. desgn the wor dbox 
-    i. need a box
-    ii. need words inside the box 
-
-2. what all new states 
-    i. i need words in the box 
-    ii. i need to know what all user has typed till now 
-    iii. i need to know the current position of the user
-
-3. add keyboard event listener for user typing
-
-4. handle restart and finish
-
-5. show some dummy result after typing 
-
--- what is useMemo
-
-*/

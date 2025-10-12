@@ -261,19 +261,3 @@ export default function TypingTest() {
     );
 }
 
-
-/*
-1.
-1. add color blind mode (tis a simple toggle)
-    i. so we need another state
-    ii. simply pass the state to typing display and handle it there
-
-1. calculate wpm/accuracy 
-
-3. now you want to save the results in DB
-    i. first think where will i get user id from 
-    ii. then create a new API in backend to save the results
-    iii. call that API from here
-
-
-*/
