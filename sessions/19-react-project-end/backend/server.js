@@ -8,9 +8,9 @@ const app = express();
 
 //cors
 app.use(cors({
-    origin: ['https://typesafe-vidyakshina.vercel.app'],
-    methods: ["GET", "POST", "OPTIONS"],
-    // allowedHeaders: ["Content-Type", "Authorization"],
+    origin: ['https://typesafe-vidyakshina.vercel.app', "http://localhost:8020"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"], // Uncomment this
     credentials: true,
     optionsSuccessStatus: 200
 }))

@@ -24,7 +24,7 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      const result = await axios.post('https://vidyakshina-public-gules.vercel.app/login',
+      const result = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`,
         { username, password },
         {
           withCredentials: true

@@ -42,7 +42,7 @@ async function saveResults(wpm, accuracy) {
 
   try {
     const userId = sessionStorage.getItem('user_id');
-    await fetch('https://vidyakshina-public-gules.vercel.app/results/', {
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/results/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',

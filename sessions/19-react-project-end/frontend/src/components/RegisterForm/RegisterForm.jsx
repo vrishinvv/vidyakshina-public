@@ -23,7 +23,7 @@ export default function RegisterForm() {
 
     setLoading(true);
     try {
-      await axios.post('https://vidyakshina-public-gules.vercel.app/register', {
+      await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/register`, {
         username,
         password,
       },
