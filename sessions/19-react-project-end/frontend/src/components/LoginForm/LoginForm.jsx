@@ -29,7 +29,7 @@ export default function LoginForm() {
       );
 
       console.log(result);
-      const userId = result.data.id;
+      const userId = result.data.user_id;
  
       sessionStorage.setItem('user_id', userId);
 
