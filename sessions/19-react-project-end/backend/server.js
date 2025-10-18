@@ -8,7 +8,9 @@ const app = express();
 
 //cors
 app.use(cors({
-    origin: '*'
+    origin: ['https://typesafe-vidyakshina.vercel.app'],
+    credentials: true,
+    optionsSuccessStatus: 200
 }))
 
 app.use(express.json());
