@@ -31,7 +31,6 @@ app.post("/register", async (req, res)=> {
     }
     addUser(username, password);
     res.send({
-        id: user.rows[0].id,
         message: "Successfully added!"
     });
 })
