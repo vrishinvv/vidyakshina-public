@@ -60,7 +60,7 @@ app.post("/login", async (req, res)=> {
     if(result.rows.length !== 0){
         res.status(200);
         res.send({
-            id: result.rows[0].id, 
+            user_id: result.rows[0].id, 
             message: "Successfully signed in!"
         });
     }else{
@@ -80,6 +80,8 @@ app.post("/login", async (req, res)=> {
 
 app.post("/results", async (req, res)=>{
     const { userId, wpm, accuracy } = req.body;
+
+    console.log(userId, wpm, accuracy);
 
     // We save the typing session details by creating a new row in the results DB
     try {
