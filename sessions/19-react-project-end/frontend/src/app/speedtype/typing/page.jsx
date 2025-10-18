@@ -45,6 +45,7 @@ async function saveResults(wpm, accuracy) {
     await fetch('https://vidyakshina-public-gules.vercel.app/results/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify({ userId, wpm, accuracy })
     });
   } catch (err) {

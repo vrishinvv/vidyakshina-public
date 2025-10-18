@@ -26,6 +26,9 @@ export default function RegisterForm() {
       await axios.post('https://vidyakshina-public-gules.vercel.app/register', {
         username,
         password,
+      },
+      {
+          withCredentials: true
       });
       // After successful registration redirect to login
       router.push('/auth/login');
