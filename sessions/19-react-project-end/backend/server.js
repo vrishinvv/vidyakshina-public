@@ -31,7 +31,7 @@ app.post("/register", async (req, res)=> {
     }
     addUser(username, password);
     res.send({
-        id: user.id,
+        id: user.rows[0].id,
         message: "Successfully added!"
     });
 })
@@ -99,4 +99,3 @@ app.post("/results", async (req, res)=>{
         res.status(500).json({ error: 'Something went wrong' });
     }
 })
-
